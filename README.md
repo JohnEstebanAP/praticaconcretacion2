@@ -1,12 +1,6 @@
 # Pratica de Concretación 2 Web 2.1
 
-
-Este repositorio contiene el taller de evaluación de java, 
-con sus 18 ejercicios todos en un solo paquete llamado org.sofka 
-y los puntos están guardados como org.sofka.punto1 - org.sofka.punto18.
-
-Para poder ser ejecutado se encuentra en el paquete org.sofka.software y en este se encuentra la clase Main donde se 
-encuentra el método main para iniciar un menu y poder seleccionar que punto se desea ejecutar.
+Práctica de concreción del corso de desarrollo web 2.1, práctica realizada con sprimbug por el lado del Back-end y javaScript-vanilla por el lado del cliente  Se complemento el proyecto de listar usuarios el cual es un demo de un CRUD, añadiendo las funcionalidades buscar y eliminar por correo electrónico además de realizar mejoras y las validaciones en el proyecto.
 
 Sé debe clonar el repositorio y en un IDE como Intellij IDEA se podrá ejecutar cada clase para poder probarla.
 
