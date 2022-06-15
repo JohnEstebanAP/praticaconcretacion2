@@ -54,6 +54,14 @@ public class UsuarioModel {
         this.prioridad = prioridad;
     }
 
+    public UsuarioModel(long id,String nombre, String email, Integer prioridad) {
+        this.id =id;
+        this.nombre = nombre;
+        this.email = email;
+        this.prioridad = prioridad;
+    }
+
+
     public UsuarioModel() {
 
     }
