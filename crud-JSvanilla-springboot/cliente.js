@@ -147,7 +147,8 @@ on(document, "click", ".btnEditar", (e) => {
 formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (true) {
+  console.log(validacionForm());
+  if (validacionForm()) {
     if (opcion == "crear") {
       createUser();
     }
@@ -155,7 +156,6 @@ formUsuario.addEventListener("submit", (e) => {
       updateUser();
     }
     modalUsuario.hide();
-  } else {
   }
 });
 
@@ -202,9 +202,17 @@ const updateUser = () => {
 
 //Procedimiento para validar los datos del formulario de crear y editar
 const validacionForm = () => {
-  console.log(nombre.value);
+  if (nombre.value.length < 1) {
+    return false;
+  }
 
-  //if(nombre.value)
+  if (email.value.length < 1) {
+    return false;
+  }
+
+  if (prioridad.value.length <= 0 ) {
+    return false;
+  }
 
   return true;
 };
