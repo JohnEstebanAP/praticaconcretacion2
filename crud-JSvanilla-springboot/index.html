@@ -72,7 +72,10 @@
 
       <div id="containerEmail">
         <div class="divInputEmail">
-          <input type="text" name="Correo" id="inputEmail" class="form-control" placeholder="correoElectronico@gmail.com">
+          <input type="text" name="Correo" id="inputEmail" class="form-control" placeholder="correoElectronico@gmail.com" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
         </div>
         <div>
           <button id="btnBuscar" type="button" class="btn btn-success">Buscar Por El Correo</button>
@@ -103,20 +106,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="formCreate">
+          <form id="formCreate" class="needs-validation"> 
             <div class="mb-3">
               <label for="nombre" class="col-form-label">Nombre:</label>
-              <input id="nombre" type="text" class="form-control" autofocus>
+              <input id="nombre" type="text" class="form-control" autofocus required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
             <div class="mb-3">
               <label for="email" class="col-form-label">Email</label>
-              <input id="email" type="text" class="form-control">
+              <input id="email" type="text" class="form-control" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
             <div class="mb-3">
               <label for="prioridad" class="col-form-label">Prioridad</label>
-              <input id="prioridad" type="text" class="form-control">
+              <input id="prioridad" type="text" class="form-control" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
-        </div>
+           
+          </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
