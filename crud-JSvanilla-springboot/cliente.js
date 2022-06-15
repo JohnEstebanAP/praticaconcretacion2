@@ -150,8 +150,7 @@ on(document, "click", ".btnEditar", (e) => {
 //Procedimiento para Crear y Editar
 formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  console.log(validacionForm());
+  
   if (validacionForm()) {
     if (opcion == "crear") {
       createUser();

@@ -22,7 +22,7 @@ public class UsuarioServiceTest {
 
     @Test
     public void testGuardarUsuario(){
-        UsuarioModel usuarioModel=new UsuarioModel("aquaman","aqua@gmail.com",99);
+        UsuarioModel usuarioModel=new UsuarioModel("aquaman","steban.ea145@gmail.com",99);
         UsuarioModel usuarioModelRegistrado = usuarioRepository.save(usuarioModel);
         assertNotNull(usuarioModelRegistrado);
     }
@@ -34,6 +34,12 @@ public class UsuarioServiceTest {
         assertThat(usuarioModelBuscado.get().getId()).isEqualTo(idBuscado);
     }
 
+    @Test
+    public void testBuscarUsuarioPorEmail(){
+        String emailBuscado= "esteban.ea145@gmail.com";
+        Optional<UsuarioModel> usuarioModelBuscado=usuarioRepository.findByEmail(emailBuscado);
+        assertThat(usuarioModelBuscado.get().getEmail()).isEqualTo(emailBuscado);
+    }
     @Test
     public void testListarUsuarios(){
         List<UsuarioModel> usuarioModelList=(List<UsuarioModel>) usuarioRepository.findAll();
