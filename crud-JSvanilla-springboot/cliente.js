@@ -228,8 +228,7 @@ const validacionEmail = () => {
   }
   return true;
 };
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+//función para mostar el mensaje de la validación.
 (function () {
   'use strict'
 
@@ -249,3 +248,10 @@ const validacionEmail = () => {
       }, false)
     })
 })()
+
+btnBuscar.addEventListener("click", () => {
+  console.log()
+  if (inputEmail.value < 1){
+    inputEmail.placeholder = "Por favor ingrese un email";
+  }
+});
