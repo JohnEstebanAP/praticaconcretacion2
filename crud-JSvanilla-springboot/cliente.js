@@ -1,6 +1,7 @@
 //Definición de variables
 const url = "http://localhost:8080/usuario/";
 const contenedor = document.querySelector("tbody");
+const modalDialog = document.querySelector(".modal-dialog"); 
 let resultados = "";
 
 const modalUsuario = new bootstrap.Modal(
@@ -13,9 +14,7 @@ const prioridad = document.getElementById("prioridad");
 var opcion = "";
 
 btnCrear.addEventListener("click", () => {
-  nombre.value = "";
-  email.value = "";
-  prioridad.value = "";
+  formCreate.reset();
   modalUsuario.show();
   opcion = "crear";
 });
