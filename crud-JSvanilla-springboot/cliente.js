@@ -66,44 +66,48 @@ const on = (element, event, selector, handler) => {
 on(document, "click", "#btnBuscar", (e) => {
   const email = inputEmail.value;
 
-  alertify.confirm(
-    "This is a confirm dialog.",
-    function () {
-      fetch(url + "email/" + email, {
-        method: "GET",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          mostrarByEmail(data);
+  if (validacionEmail()) {
+    alertify.confirm(
+      "This is a confirm dialog.",
+      function () {
+        fetch(url + "email/" + email, {
+          method: "GET",
         })
-        .catch((error) => console.log(error));
-      const alertOk = alertify.success("Ok");
-    },
-    function () {
-      alertify.error("Cancel");
-    }
-  );
+          .then((response) => response.json())
+          .then((data) => {
+            mostrarByEmail(data);
+          })
+          .catch((error) => console.log(error));
+        const alertOk = alertify.success("Ok");
+      },
+      function () {
+        alertify.error("Cancel");
+      }
+    );
+  }
 });
 
 //Procedimiento Eliminar un usuario por el correo.
 on(document, "click", "#btnEliminar", (e) => {
-  const email = inputEmail.value;
-  alertify.confirm(
-    "This is a confirm dialog.",
-    function () {
-      fetch(url + "email/" + email, {
-        method: "DELETE",
-      })
-        .then((res) => {
-          res.json();
+  if (validacionEmail()) {
+    const email = inputEmail.value;
+    alertify.confirm(
+      "This is a confirm dialog.",
+      function () {
+        fetch(url + "email/" + email, {
+          method: "DELETE",
         })
-        .then(() => location.reload());
-      alertify.success("Ok");
-    },
-    function () {
-      alertify.error("Cancel");
-    }
-  );
+          .then((res) => {
+            res.json();
+          })
+          .then(() => location.reload());
+        alertify.success("Ok");
+      },
+      function () {
+        alertify.error("Cancel");
+      }
+    );
+  }
 });
 
 //Procedimiento Borrar
@@ -210,9 +214,17 @@ const validacionForm = () => {
     return false;
   }
 
-  if (prioridad.value.length <= 0 ) {
+  if (prioridad.value.length <= 0) {
     return false;
   }
 
+  return true;
+};
+
+//Procedimiento para validar los datos del formulario del correo
+const validacionEmail = () => {
+  if (inputEmail.value.length < 2) {
+    return false;
+  }
   return true;
 };
