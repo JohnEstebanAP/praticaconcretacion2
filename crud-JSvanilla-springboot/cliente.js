@@ -1,7 +1,7 @@
 //Definición de variables
 const url = "http://localhost:8080/usuario/";
 const contenedor = document.querySelector("tbody");
-const modalDialog = document.querySelector(".modal-dialog"); 
+const modalDialog = document.querySelector(".modal-dialog");
 let resultados = "";
 
 const modalUsuario = new bootstrap.Modal(
@@ -14,7 +14,7 @@ const prioridad = document.getElementById("prioridad");
 var opcion = "";
 
 btnCrear.addEventListener("click", () => {
-  formCreate.reset();
+  formUsuario.reset();
   modalUsuario.show();
   opcion = "crear";
 });
@@ -91,7 +91,7 @@ on(document, "click", "#btnEliminar", (e) => {
   alertify.confirm(
     "This is a confirm dialog.",
     function () {
-      fetch(url +'email/'+ email, {
+      fetch(url + "email/" + email, {
         method: "DELETE",
       })
         .then((res) => {
@@ -146,42 +146,65 @@ on(document, "click", ".btnEditar", (e) => {
 //Procedimiento para Crear y Editar
 formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (opcion == "crear") {
-    //console.log('OPCION CREAR')
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre.value,
-        email: email.value,
-        prioridad: prioridad.value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const nuevoUsuario = [];
-        nuevoUsuario.push(data);
-        mostrar(nuevoUsuario);
-      });
+
+  if (true) {
+    if (opcion == "crear") {
+      createUser();
+    }
+    if (opcion == "editar") {
+      updateUser();
+    }
+    modalUsuario.hide();
+  } else {
   }
-  if (opcion == "editar") {
-    //console.log('OPCION EDITAR')
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: idForm,
-        nombre: nombre.value,
-        email: email.value,
-        prioridad: prioridad.value,
-      }),
-    })
-      .then((response) => response.json())
-      .then(() => location.reload());
-  }
-  modalUsuario.hide();
 });
+
+//Procedimiento para cear un Usuario.
+const createUser = () => {
+  //console.log('OPCION CREAR')
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nombre: nombre.value,
+      email: email.value,
+      prioridad: prioridad.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const nuevoUsuario = [];
+      nuevoUsuario.push(data);
+      mostrar(nuevoUsuario);
+    });
+};
+
+//Procedimiento para editar  un Usuario.
+const updateUser = () => {
+  //console.log('OPCION EDITAR')
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: idForm,
+      nombre: nombre.value,
+      email: email.value,
+      prioridad: prioridad.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then(() => location.reload());
+};
+
+//Procedimiento para validar los datos del formulario de crear y editar
+const validacionForm = () => {
+  console.log(nombre.value);
+
+  //if(nombre.value)
+
+  return true;
+};
